@@ -5,7 +5,7 @@ import Tempo from './components/Tempo';
 import Api from  './components/Api';
 
 export default function App() {
-  const [cidade, setCidade] = useState("");
+  const [cidade, setCidade] = useState("itu");
   const [dados, setDados] = useState("");
 
   async function buscaCep(){
