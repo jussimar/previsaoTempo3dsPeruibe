@@ -9,7 +9,7 @@ export default function App() {
   const [dados, setDados] = useState("");
 
   async function buscaCep(){
-    const response = await Api.get(`weather?array_limit=2&fields=only_results,temp,city_name,forecast,max,min,date,description&key=02470d6b&city_name=${cidade},SP`);
+    const response = await Api.get(`weather?array_limit=1&fields=only_results,temp,city_name,forecast,max,min,date,description&key=02470d6b&city_name=${cidade},SP`);
     setDados(response.data.forecast[0]);
   }
   return (
@@ -22,6 +22,7 @@ export default function App() {
         <TextInput 
           placeholder='sua cidade ...'
           style={styles.input}
+          onChangeText={(value)=>setCidade(value)}
         />
       </View>
       <View style={styles.blocoGeral}>
