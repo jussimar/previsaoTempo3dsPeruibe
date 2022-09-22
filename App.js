@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, FlatList} from 'react-native';
 import Tempo from './components/Tempo';
 
 import Api from  './components/Api';
@@ -30,7 +30,22 @@ export default function App() {
           <Text style={styles.textoBotao}>Buscar</Text>
         </TouchableOpacity>
       </View>
-      <Tempo data={dados}/>
+     {/*
+        <Tempo data={dados}/>
+      */}
+      <FlatList 
+        data={dados}
+        renderItem={({item})=>{
+          return(
+              <View>
+                  <Text>Data: {item.date}</Text>
+                  <Text>Max: {item.max}</Text>
+                  <Text>Min: {item.min}</Text>
+                  <Text>Descrição: {item.description}</Text>
+              </View>
+          );
+        }}
+      />
     </View>
   );
 }
