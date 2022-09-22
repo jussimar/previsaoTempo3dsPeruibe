@@ -9,8 +9,8 @@ export default function App() {
   const [dados, setDados] = useState("");
 
   async function buscaCep(){
-    const response = await Api.get(`weather?array_limit=1&fields=only_results,temp,city_name,forecast,max,min,date,description&key=02470d6b&city_name=${cidade},SP`);
-    setDados(response.data.forecast[0]);
+    const response = await Api.get(`weather?array_limit=10&fields=only_results,temp,city_name,forecast,max,min,date,description&key=02470d6b&city_name=${cidade},SP`);
+    setDados(response.data.forecast);
   }
   return (
     <View style={styles.container}>
@@ -38,7 +38,7 @@ export default function App() {
         renderItem={({item})=>{
           return(
               <View>
-                  <Text>Data: {item.date}</Text>
+                  <Text styles={styles.texto}>Data: {item.date}</Text>
                   <Text>Max: {item.max}</Text>
                   <Text>Min: {item.min}</Text>
                   <Text>Descrição: {item.description}</Text>
@@ -54,6 +54,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  texto:{
+   fontSize:20
+  },  
   bloco:{
     alignItems:'center',
     marginBottom:20,
